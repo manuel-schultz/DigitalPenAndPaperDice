@@ -10,4 +10,11 @@ A tiny python commandline app that simulates Dice. Everything from D1 to D36. Ab
 * Little bit of friendly chat with the system.
 
 ## Usage
-When you download the files just execute the `main.py` File from your terminal
+### Source Code
+After you download the files just execute the `main.py` File from your terminal with the command `python main.py`
+
+### Windows EXE App
+After you download the .exe application, just execute it. No installation required.
+
+## Python
+Programmed with Python `3.9.3`
