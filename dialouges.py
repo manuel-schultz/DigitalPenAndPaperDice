@@ -61,12 +61,12 @@ def error_add_wrong_dice():
     print( "****************************" )
     print( "What did you say, young adventurer?" )
     print( "That doesn't sound like a dice I have ever heard of." )
-    print( "Try calling it 'Dsoandso' and say the number of sides where I said soandso" )
+    print( "Try calling it 'Dsoandso' and say the number of sides where I said soandso." )
     print( "****************************" )
 
 def error_remove_wrong_dice():
     print( "****************************" )
     print( "What did you say, young adventurer?" )
     print( "That one is not even on the list." )
-    print( "Try calling it 'Dsoandso' and say the number of sides where I said soandso" )
+    print( "Try nameing one of the dice on my list." )
     print( "****************************" )

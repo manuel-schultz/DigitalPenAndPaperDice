@@ -1,5 +1,9 @@
-import functions
-import dialouges
+try:
+    import functions
+    import dialouges
+except Exception as error:
+    print( "Import failed!" )
+    print( error )
 
 dice = []
 

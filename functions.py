@@ -1,7 +1,9 @@
-import dialouges
-import random
+import os
 import re
 import sys
+
+import dialouges
+import random
 
 # Receiving an array of numbers and return an array with dice like D6.
 def numbers_to_dice( numbers ):
@@ -18,32 +20,31 @@ def number_to_dice( n ):
 # Wait for user main input and call actions acordingly.
 def wait_for_main_choice( dice ):
     main_choice = input( "I choose: " )
-    match main_choice:
-        case "1":
-            dice_roll( dice )
-        case "2":
-            dialouges.space()
-            dialouges.space()
-            dialouges.show_selection( dice )
-        case "3":
-            dice = add_dice( dice )
-        case "4":
-            dice = remove_dice( dice )
-        case "5":
-            dialouges.space()
-            dialouges.space()
-            dialouges.introduction()
-        case "6" | "close" | "exit" | "c":
-            close_app()
-        case _:
-            try_again()
+    if main_choice == "1":
+        dice_roll( dice )
+    elif main_choice == "2":
+        os.system( "cls" )
+        dialouges.show_selection( dice )
+    elif main_choice == "3":
+        dice = add_dice( dice )
+        os.system( "cls" )
+        dialouges.show_selection( dice )
+    elif main_choice == "4":
+        dice = remove_dice( dice )
+        os.system( "cls" )
+        dialouges.show_selection( dice )
+    elif main_choice == "5":
+        os.system( "cls" )
+        dialouges.introduction()
+    elif main_choice == "6" or main_choice == "close" or main_choice == "c" or main_choice == "exit" or main_choice == "x":
+        close_app()
+    else:
+        try_again()
 
 # Create random numbers for all active dice. Also display results.
 def dice_roll( dice ):
-    dialouges.space()
-    dialouges.space()
-
     if len( dice ) == 0:
+        os.system( "cls" )
         dialouges.error_no_dice()
         return
 
@@ -53,7 +54,7 @@ def dice_roll( dice ):
         
     for d in dice:
         if d != 1:
-            pip = random.randrange( 1, d )
+            pip = random.randrange( 1, d + 1 )
         else:
             pip = 1
         pips.append( pip )
@@ -63,12 +64,12 @@ def dice_roll( dice ):
         values += str( pip ) + ", "
     
     values = values[:-2]
+    os.system( "cls" )
     dialouges.dice_result( values, total )
 
 # Add one dice to the list of active dice.
 def add_dice( dice ):
-    dialouges.space()
-    dialouges.space()
+    os.system( "cls" )
     dialouges.offer_new_dice()
     dialouges.space()
     dialouges.space()
@@ -80,8 +81,7 @@ def add_dice( dice ):
         if regex_result and int( regex_result.group( 1 ) ) < 37 and int( regex_result.group( 1 ) ) > 0:
             break
         else:
-            dialouges.space()
-            dialouges.space()
+            os.system( "cls" )
             dialouges.error_add_wrong_dice()
             dialouges.space()
             dialouges.space()
@@ -91,9 +91,8 @@ def add_dice( dice ):
 
 # Remove one dice of the list of active dice.
 def remove_dice( dice ):
-    dialouges.space()
-    dialouges.space()
     while True:
+        os.system( "cls" )
         dialouges.show_selection( dice )
 
         if len( dice ) < 1:
@@ -105,12 +104,11 @@ def remove_dice( dice ):
         if regex_result and int( regex_result.group( 1 ) ) in dice:
             break
         else:
-            dialouges.space()
-            dialouges.space()
+            os.system( "cls" )
             dialouges.error_remove_wrong_dice()
             dialouges.space()
             dialouges.space()
-        
+
     dice.remove( int( regex_result.group( 1 ) ) )
     return dice
 
@@ -118,7 +116,7 @@ def remove_dice( dice ):
 def try_again():
     # Do nothing, Code will recall the main_choice functionality.
     # To fix the Expected indented block error we need to do something.
-    a = 1
+    os.system( "cls" )
 
 # Close the python script.
 def close_app():
